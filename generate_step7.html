@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>step7</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/style_generate.css">
+  <link rel="stylesheet" href="style/style_generate_1000_step2.css">
+  <link rel="stylesheet" href="style/style_generate_buttons_unified.css">
+
+  <style>
+    .step7-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px 110px;
+      text-align: center;
+    }
+
+    .step7-preview {
+      margin: -10px auto 0;
+      max-width: 760px;
+    }
+
+    .step7-preview__img {
+      display: block;
+      width: 750px;
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 0;
+      object-fit: contain;
+    }
+
+    .step7-retry {
+      margin-top: 45px;
+      text-align: center;
+    }
+
+    .step7-retry__text {
+      margin: 0 0 12px;
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #0f0f0f;
+    }
+
+    .step7-retry__controls {
+      display: inline-flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .step7-retry__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      padding: 0 54px;
+      border: 2px solid #000000;
+      border-radius: 40px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .step7-retry__btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+    }
+
+    .step7-retry__btn:hover::before {
+      animation: step7-btn-shine 0.85s forwards;
+    }
+
+    @keyframes step7-btn-shine {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    .step7-retry__btn:hover {
+      color: #ffffff;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #d12337 0%, #6b121e 100%);
+    }
+
+    .step7-retry__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      color: #ffffff;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      transition: transform 0.25s ease, background 0.25s ease;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .step7-retry__icon svg {
+      width: 32px;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+
+    .step7-retry__btn:hover + .step7-retry__icon {
+      transform: translateX(6px);
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #d12337 0%, #6b121e 100%);
+    }
+
+    .step7-retry__icon:hover svg {
+      transform: translateX(4px);
+    }
+
+    .step7-actions {
+      margin-top: 48px;
+    }
+
+    .step7-actions .code-step__actions {
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .block7 {
+      max-width: 800px;
+      margin: 26px auto 0;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      overflow: visible;
+    }
+
+    .block7_desk {
+      box-shadow: 3px 5px 12px 0 rgba(0, 0, 0, 0.25), 10px 19px 22px 0 rgba(0, 0, 0, 0.21), 23px 43px 29px 0 rgba(0, 0, 0, 0.13), 42px 76px 35px 0 rgba(0, 0, 0, 0.04), 65px 118px 38px 0 rgba(0, 0, 0, 0);
+      border: 2px solid #0f0f0f;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 80px 60px 40px 40px;
+      box-sizing: border-box;
+      position: relative;
+      background: #ffffff;
+      overflow: visible;
+    }
+
+    .image_block7 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .image_block7 img {
+      position: absolute;
+      left: 0;
+      top: -70%;
+      transform: translateY(-50%);
+      width: 50%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      z-index: 10;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    }
+
+    .image_block7 h1 {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.23;
+      text-transform: uppercase;
+      text-align: right;
+      color: #0f0f0f;
+      margin: 0 0 0 auto;
+      width: 100%;
+      z-index: 5;
+      position: relative;
+    }
+
+    .btn_block7 {
+      margin-top: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+    }
+
+    .txt_block7_btn {
+      text-align: left;
+    }
+
+    .txt_block7_btn h2 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.15;
+      color: #0f0f0f;
+    }
+
+    .h2_txt7 {
+      margin-left: 80px;
+    }
+
+    .btn_arrow3 {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .btn-circle3 {
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 40px;
+      border: 0;
+      border-radius: 36px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .btn-circle3::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+    }
+
+    .btn-circle3:hover::before {
+      animation: block7-shine 0.8s forwards;
+    }
+
+    @keyframes block7-shine {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    .btn-icon3 {
+      padding: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 0;
+      color: #ffffff;
+      margin-left: -5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+    }
+
+    .btn-circle3:hover + .btn-icon3 {
+      transform: translateX(4px);
+    }
+
+    .mob_bl7 {
+      display: none;
+    }
+
+    .btn_arrow3_mob {
+      display: none;
+    }
+
+    @media (max-width: 1000px) {
+      .step7-content {
+        padding: 0 16px 72px;
+      }
+
+      .step7-preview {
+        margin-top: -10px;
+      }
+
+      .step7-retry__text {
+        font-size: 24px;
+      }
+
+      .step7-retry__btn {
+        height: 48px;
+        padding: 0 24px;
+        font-size: 16px;
+      }
+
+      .step7-retry__icon {
+        width: 48px;
+        height: 48px;
+      }
+
+      .step7-retry__icon svg {
+        width: 24px;
+      }
+
+      .block7 {
+        padding: 32px 0 20px;
+      }
+
+      .block7_desk {
+        padding: 60px 25px 20px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .image_block7 {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .image_block7 img {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 108%;
+        margin-top: -112px;
+      }
+
+      .title_desk_bl7 {
+        display: none;
+      }
+
+      .mob_bl7 {
+        display: block;
+        position: relative;
+        top: -25px;
+        margin: 0;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1.08;
+        text-transform: uppercase;
+        text-align: center;
+        color: #0f0f0f;
+      }
+
+      .btn_block7 {
+        margin-top: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .txt_block7_btn {
+        text-align: center;
+      }
+
+      .h2_txt7 {
+        margin-left: 0;
+      }
+
+      .txt_block7_btn h2 {
+        font-size: 20px;
+      }
+
+      .btn_arrow3 {
+        display: none;
+      }
+
+      .btn_arrow3_mob {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .btn-circle3_mob {
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 10px;
+        border: 0;
+        border-radius: 36px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      }
+
+      .btn-icon3_mob {
+        padding: 15px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 0;
+        color: #ffffff;
+        margin-left: 0;
+        background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="center_header">
+      <div class="logo_box">
+        <h3 class="PC_h3">+7 900 000-00-00</h3>
+        <img src="img/logo.png" alt="">
+        <h3 class="PC_h3">info@mozle.ru</h3>
+      </div>
+
+      <div id="menu" class="link_box">
+        <a href="" class="header_link">Получить инструкцию</a>
+        <a href="" class="header_link">Загрузить фото</a>
+        <a href="" class="header_link">Каталог</a>
+        <a href="" class="header_link">Дилерам</a>
+        <a href="" class="header_link">Контакты</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu_mobile">
+    <div class="center_header_mob">
+      <div class="logo_box_mob">
+        <img src="img/logo.png" alt="">
+        <div class="burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="right_txt_mob">
+          <h3>+7 900 000-00-00</h3>
+          <h3>info@mozle.ru</h3>
+        </div>
+      </div>
+
+      <div id="menu2" class="link_box">
+        <a href="" class="header_link">Получить инструкцию</a>
+        <a href="" class="header_link">Загрузить фото</a>
+        <a href="" class="header_link">Каталог</a>
+        <a href="" class="header_link">Дилерам</a>
+        <a href="" class="header_link">Контакты</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <section class="step7-content">
+      <div class="step7-preview">
+        <img id="step7-random-color" class="step7-preview__img" src="" alt="Демонстрация цветового пресета">
+      </div>
+
+      <div class="step7-retry">
+        <p class="step7-retry__text">ХОЧУ ЕЩЕ!</p>
+        <div class="step7-retry__controls">
+          <a class="step7-retry__btn" href="generate_step4.html">Выбрать другое фото</a>
+          <a class="step7-retry__icon" href="generate_step4.html" aria-label="Выбрать другое фото">
+            <svg viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="block7">
+        <h1 class="mob_bl7">У вас уже есть<br>набор мозаики MOZLE</h1>
+        <div class="block7_desk">
+          <div class="image_block7">
+            <img src="img/step7img.png" alt="">
+            <h1 class="title_desk_bl7">Понравилось!</h1>
+          </div>
+
+          <div class="btn_block7">
+     
+
+            <div class="btn_arrow3 c2">
+              <a href="#" class="btn-circle3">
+                <span class="btn-text3">Купить набор</span>
+              </a>
+              <span class="btn-icon3">
+                <svg width="30" viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn_arrow3_mob c2">
+          <a href="#" class="btn-circle3_mob">
+            <span class="btn-text3_mob">получить инструкцию</span>
+          </a>
+          <span class="btn-icon3_mob">
+            <svg width="30" viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="step7-actions">
+        <div class="code-step__actions">
+          <a href="generate_step6.html">
+            <div class="step-btn step-btn--back">
+              <button class="step-btn__icon step-btn__icon--dark" type="button" aria-label="Назад">
+                <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M38.6357 9.54596C39.4642 9.54596 40.1357 10.2175 40.1357 11.046C40.1357 11.8744 39.4642 12.546 38.6357 12.546V11.046V9.54596ZM0.439262 12.1066C-0.146523 11.5208 -0.146523 10.5711 0.439262 9.9853L9.9852 0.439358C10.571 -0.146429 11.5207 -0.146429 12.1065 0.439358C12.6923 1.02514 12.6923 1.97489 12.1065 2.56068L3.62124 11.046L12.1065 19.5312C12.6923 20.117 12.6923 21.0668 12.1065 21.6526C11.5207 22.2383 10.571 22.2383 9.9852 21.6526L0.439262 12.1066ZM38.6357 11.046V12.546H1.49992V11.046V9.54596H38.6357V11.046Z" fill="white"/>
+                </svg>
+              </button>
+              <button class="step-btn__main step-btn__main--dark" type="button">Назад</button>
+            </div>
+          </a>
+
+          <a href="index.html">
+            <div class="step-btn step-btn--next">
+              <button class="step-btn__main step-btn__main--red" type="button">На главную</button>
+              <button class="step-btn__icon step-btn__icon--red" type="button" aria-label="Далее">
+                <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM39.6965 12.1066C40.2823 11.5208 40.2823 10.5711 39.6965 9.9853L30.1505 0.439358C29.5648 -0.146429 28.615 -0.146429 28.0292 0.439358C27.4434 1.02514 27.4434 1.97489 28.0292 2.56068L36.5145 11.046L28.0292 19.5312C27.4434 20.117 27.4434 21.0668 28.0292 21.6526C28.615 22.2383 29.5648 22.2383 30.1505 21.6526L39.6965 12.1066ZM1.5 11.046V12.546H38.6358V11.046V9.54596H1.5V11.046Z" fill="white"/>
+                </svg>
+              </button>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="/" class="brand-link">
+          <img class="footer_logo" src="img/logo.png" alt="">
+        </a>
+      </div>
+
+      <div class="footer-nav">
+        <ul class="footer-menu">
+          <li><a href="#">Каталог</a></li>
+          <li><a href="#">Получить инструкцию</a></li>
+          <li><a href="#">Загрузить фото</a></li>
+          <li><a href="#">Отзывы покупателей</a></li>
+          <li><a href="#">Дилерам и партнерам</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-legal">
+        <ul class="legal-links">
+          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><a href="#">Политика использования файлов cookies</a></li>
+          <li><a href="#">Обработка персональных данных</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contacts">
+        <a href="tel:+79000000000" class="contact-phone">+7 900 000-00-00</a>
+        <a href="mailto:info@mozle.ru" class="contact-email">info@mozle.ru</a>
+        <address class="contact-address">
+          101000, г. Москва, ул. Тверская, д. 15/2, корп. 1, офис 177
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">2025 © MozLe</p>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById("burger");
+    const menu = document.getElementById("menu2");
+
+    if (burger && menu) {
+      burger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+      });
+    }
+
+    const orientationKey = "mozle_editor_orientation";
+    const orientation = localStorage.getItem(orientationKey) || "landscape";
+    const randomColorImage = document.getElementById("step7-random-color");
+    const colorDemoDir = "img/\u0441olor_demo";
+
+    const landscapeImages = [
+      `${colorDemoDir}/color1_book.png`,
+      `${colorDemoDir}/color2_book.png`,
+      `${colorDemoDir}/color3_book.png`,
+      `${colorDemoDir}/color4_book.png`
+    ];
+
+    const portraitImages = [
+      `${colorDemoDir}/color1.png`,
+      `${colorDemoDir}/color2.png`,
+      `${colorDemoDir}/color3.png`,
+      `${colorDemoDir}/color4.png`
+    ];
+
+    if (randomColorImage) {
+      const targetPool = orientation === "portrait" ? portraitImages : landscapeImages;
+      const randomIndex = Math.floor(Math.random() * targetPool.length);
+      randomColorImage.src = targetPool[randomIndex];
+    }
+  </script>
+</body>
+</html>
