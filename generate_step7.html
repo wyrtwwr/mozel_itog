@@ -16,11 +16,36 @@
     .step7-content {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 10px 20px 110px;
+      padding: 10px 20px 0px;
       text-align: center;
     }
 
+    .step7-frame-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 24px;
+      margin: 0;
+      border: 2px solid #111111;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #111111;
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
     .step7-preview {
+      position: relative;
       margin: -10px auto 0;
       max-width: 760px;
     }
@@ -40,7 +65,7 @@
     }
 
     .step7-retry__text {
-      margin: 0 0 12px;
+      margin: 0 0 25px;
       font-size: 28px;
       line-height: 1.1;
       font-weight: 700;
@@ -145,9 +170,29 @@
       gap: 16px;
     }
 
+    .step7-actions .step-btn--next .step-btn__main,
+    .step7-actions .step-btn--next .step-btn__icon {
+      border: 2px solid #000000 !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    .step7-actions .step-btn--next .step-btn__icon {
+      order: -1;
+    }
+
+    .step7-actions .step-btn--next .step-btn__icon svg {
+      transform: scaleX(-1);
+    }
+
+    .step7-actions .step-btn--next:hover .step-btn__icon {
+      transform: translateX(-4px);
+    }
+
     .block7 {
       max-width: 800px;
-      margin: 26px auto 0;
+      margin: 100px auto 0;
       padding: 40px 20px;
       box-sizing: border-box;
       overflow: visible;
@@ -160,7 +205,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      padding: 80px 60px 40px 40px;
+      padding: 50px 60px;
       box-sizing: border-box;
       position: relative;
       background: #ffffff;
@@ -176,22 +221,22 @@
       position: relative;
     }
 
-    .image_block7 img {
-      position: absolute;
-      left: 0;
-      top: -70%;
-      transform: translateY(-50%);
-      width: 50%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-      z-index: 10;
-      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
-    }
+ .image_block7 img {
+    position: absolute;
+    left: -43px;
+    top: 19%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    z-index: 10;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
 
     .image_block7 h1 {
       font-weight: 700;
-      font-size: 40px;
+      font-size: 35px;
       line-height: 1.23;
       text-transform: uppercase;
       text-align: right;
@@ -203,7 +248,7 @@
     }
 
     .btn_block7 {
-      margin-top: 35px;
+      margin-top: 0px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -240,7 +285,7 @@
       align-items: center;
       justify-content: center;
       padding: 15px 40px;
-      border: 0;
+      border: 2px solid black;
       border-radius: 36px;
       color: #ffffff;
       text-decoration: none;
@@ -286,9 +331,9 @@
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      border: 0;
+      border: 2px solid black;
       color: #ffffff;
-      margin-left: -5px;
+      margin-left: 0px;
       transition: all 0.3s ease;
       cursor: pointer;
       background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
@@ -306,9 +351,42 @@
       display: none;
     }
 
+    .txt_preview {
+      width: 582px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 24px;
+    margin: 0;
+ 
+  
+    font-family: "Montserrat", sans-serif;
+ font-weight: 700;
+font-size: 24px;
+line-height: 100%;
+text-align: center;
+color: #fff;
+  
+    cursor: pointer;
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    }
+
+  
     @media (max-width: 1000px) {
       .step7-content {
         padding: 0 16px 72px;
+      }
+
+      .step7-frame-btn {
+        min-height: 40px;
+        padding: 0 14px;
+        top: 14px;
+        font-size: 12px;
       }
 
       .step7-preview {
@@ -485,6 +563,8 @@
   <main class="page">
     <section class="step7-content">
       <div class="step7-preview">
+        <button class="step7-frame-btn" type="button">ВКЛЮЧИТЬ РАМКУ</button>
+        <h3 class="txt_preview">После покупки набора вам будет доступен расширенный набор возможностей для обработки изображения</h3>
         <img id="step7-random-color" class="step7-preview__img" src="" alt="Демонстрация цветового пресета">
       </div>
 
@@ -538,23 +618,12 @@
 
       <div class="step7-actions">
         <div class="code-step__actions">
-          <a href="generate_step6.html">
-            <div class="step-btn step-btn--back">
-              <button class="step-btn__icon step-btn__icon--dark" type="button" aria-label="Назад">
-                <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M38.6357 9.54596C39.4642 9.54596 40.1357 10.2175 40.1357 11.046C40.1357 11.8744 39.4642 12.546 38.6357 12.546V11.046V9.54596ZM0.439262 12.1066C-0.146523 11.5208 -0.146523 10.5711 0.439262 9.9853L9.9852 0.439358C10.571 -0.146429 11.5207 -0.146429 12.1065 0.439358C12.6923 1.02514 12.6923 1.97489 12.1065 2.56068L3.62124 11.046L12.1065 19.5312C12.6923 20.117 12.6923 21.0668 12.1065 21.6526C11.5207 22.2383 10.571 22.2383 9.9852 21.6526L0.439262 12.1066ZM38.6357 11.046V12.546H1.49992V11.046V9.54596H38.6357V11.046Z" fill="white"/>
-                </svg>
-              </button>
-              <button class="step-btn__main step-btn__main--dark" type="button">Назад</button>
-            </div>
-          </a>
-
           <a href="index.html">
             <div class="step-btn step-btn--next">
-              <button class="step-btn__main step-btn__main--red" type="button">На главную</button>
+              <button class="step-btn__main step-btn__main--red" type="button">НА ГЛАВНУЮ</button>
               <button class="step-btn__icon step-btn__icon--red" type="button" aria-label="Далее">
                 <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM39.6965 12.1066C40.2823 11.5208 40.2823 10.5711 39.6965 9.9853L30.1505 0.439358C29.5648 -0.146429 28.615 -0.146429 28.0292 0.439358C27.4434 1.02514 27.4434 1.97489 28.0292 2.56068L36.5145 11.046L28.0292 19.5312C27.4434 20.117 27.4434 21.0668 28.0292 21.6526C28.615 22.2383 29.5648 22.2383 30.1505 21.6526L39.6965 12.1066ZM1.5 11.046V12.546H38.6358V11.046V9.54596H1.5V11.046Z" fill="white"/>
+                  <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM39.6965 12.1066C40.2823 11.5208 40.2823 10.5711 39.6965 9.9853L30.1505 0.439358C29.5648 -0.146429 28.615 -0.146429 28.0292 0.439358C27.4434 1.02514 27.4434 1.97489 28.0292 2.56068L36.5145 11.046L28.0292 19.5312C27.4434 20.117 27.4434 21.0668 28.0292 21.6526C28.615 22.2383 29.5648 22.2383 30.1505 21.6526L39.6965 12.1066ZM1.5 11.046V12.546H38.6358V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
                 </svg>
               </button>
             </div>
