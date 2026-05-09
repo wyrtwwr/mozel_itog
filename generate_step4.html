@@ -1,403 +1,784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>step7</title>
 
-    <title>step4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/style_generate.css">
+  <link rel="stylesheet" href="style/style_generate_1000_step2.css">
+  <link rel="stylesheet" href="style/style_generate_buttons_unified.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/style_generate.css">
-     <link rel="stylesheet" href="style/style_generate_1000_step2.css">
-    <link rel="stylesheet" href="style/style_generate_1000_step4.css">
+  <style>
+    .step7-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px 0px;
+      text-align: center;
+    }
+
+    .step7-frame-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 24px;
+      margin: 0;
+      border: 2px solid #111111;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #111111;
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
+    .step7-preview {
+      position: relative;
+      margin: -10px auto 0;
+      max-width: 760px;
+    }
+
+    .step7-preview__img {
+      display: block;
+      width: 750px;
+      max-width: 100%;
+      margin: 0 auto;
+      border-radius: 0;
+      object-fit: contain;
+    }
+
+    .step7-retry {
+      margin-top: 45px;
+      text-align: center;
+    }
+
+    .step7-retry__text {
+      margin: 0 0 25px;
+      font-size: 28px;
+      line-height: 1.1;
+      font-weight: 700;
+      color: #0f0f0f;
+    }
+
+    .step7-retry__controls {
+      display: inline-flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .step7-retry__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 56px;
+      padding: 0 54px;
+      border: 2px solid #000000;
+      border-radius: 40px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 0.5px;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .step7-retry__btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+    }
+
+    .step7-retry__btn:hover::before {
+      animation: step7-btn-shine 0.85s forwards;
+    }
+
+    @keyframes step7-btn-shine {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    .step7-retry__btn:hover {
+      color: #ffffff;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #d12337 0%, #6b121e 100%);
+    }
+
+    .step7-retry__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid #000000;
+      color: #ffffff;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      transition: transform 0.25s ease, background 0.25s ease;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .step7-retry__icon svg {
+      width: 32px;
+      height: auto;
+      transition: transform 0.2s ease;
+    }
+
+    .step7-retry__btn:hover + .step7-retry__icon {
+      transform: translateX(6px);
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #d12337 0%, #6b121e 100%);
+    }
+
+    .step7-retry__icon:hover svg {
+      transform: translateX(4px);
+    }
+
+    .step7-actions {
+      margin-top: 20px;
+    }
+
+    .step7-actions .code-step__actions {
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .step7-actions .step-btn--next .step-btn__main,
+    .step7-actions .step-btn--next .step-btn__icon {
+      border: 2px solid #000000 !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    .step7-actions .step-btn--next .step-btn__icon {
+      order: -1;
+    }
+
+    .step7-actions .step-btn--next .step-btn__icon svg {
+      transform: scaleX(-1);
+    }
+
+    .step7-actions .step-btn--next:hover .step-btn__icon {
+      transform: translateX(-4px);
+    }
+
+    .block7 {
+      max-width: 800px;
+      margin: 100px auto 0;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      overflow: visible;
+    }
+
+    .block7_desk {
+      box-shadow: 3px 5px 12px 0 rgba(0, 0, 0, 0.25), 10px 19px 22px 0 rgba(0, 0, 0, 0.21), 23px 43px 29px 0 rgba(0, 0, 0, 0.13), 42px 76px 35px 0 rgba(0, 0, 0, 0.04), 65px 118px 38px 0 rgba(0, 0, 0, 0);
+      border: 2px solid #0f0f0f;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 50px 60px;
+      box-sizing: border-box;
+      position: relative;
+      background: #ffffff;
+      overflow: visible;
+    }
+
+    .image_block7 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+ .image_block7 img {
+    position: absolute;
+    left: -43px;
+    top: 19%;
+    transform: translateY(-50%);
+    width: 50%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    z-index: 10;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+    .image_block7 h1 {
+      font-weight: 700;
+      font-size: 35px;
+      line-height: 1.23;
+      text-transform: uppercase;
+      text-align: right;
+      color: #0f0f0f;
+      margin: 0 0 0 auto;
+      width: 100%;
+      z-index: 5;
+      position: relative;
+    }
+
+    .btn_block7 {
+      margin-top: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 20px;
+    }
+
+    .txt_block7_btn {
+      text-align: left;
+    }
+
+    .txt_block7_btn h2 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.15;
+      color: #0f0f0f;
+    }
+
+    .h2_txt7 {
+      margin-left: 80px;
+    }
+
+    .btn_arrow3 {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .btn-circle3 {
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 40px;
+      border: 2px solid black;
+      border-radius: 36px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 600;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .btn-circle3::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+    }
+
+    .btn-circle3:hover::before {
+      animation: block7-shine 0.8s forwards;
+    }
+
+    @keyframes block7-shine {
+      0% { left: -75%; }
+      100% { left: 125%; }
+    }
+
+    .btn-icon3 {
+      padding: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid black;
+      color: #ffffff;
+      margin-left: 0px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+    }
+
+    .btn-circle3:hover + .btn-icon3 {
+      transform: translateX(4px);
+    }
+
+    .mob_bl7 {
+      display: none;
+    }
+
+    .btn_arrow3_mob {
+      display: none;
+    }
+
+    .block7_mob_title {
+      display: none;
+    }
+
+    .txt_preview {
+      width: 582px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 24px;
+    margin: 0;
  
-    <link rel="stylesheet" href="style/style_generate_buttons_unified.css">
+  
+    font-family: "Montserrat", sans-serif;
+ font-weight: 700;
+font-size: 24px;
+line-height: 100%;
+text-align: center;
+color: #fff;
+  
+    cursor: pointer;
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    }
+    .site-footer {
+    margin-top: 70px !important;
+}
+
+  
+    @media (max-width: 1000px) {
+      .step7-content {
+        padding: 0 16px 25px;
+      }
+
+      .step7-frame-btn {
+        min-height: 40px;
+        padding: 0 14px;
+        top: 328px;
+        font-size: 12px;
+      }
+
+      .step7-preview__img {
+                box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.4), -2px -4px 14px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 20px !important;
+        display: block;
+        width: 750px;
+        max-width: 100%;
+        margin: 120px auto  30px auto;
+        border-radius: 0;
+        object-fit: contain;
+      }
+
+      .txt_preview {
+        max-width:340px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 24px;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        position: absolute;
+        top: -95px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+      }
+
+      .step7-preview {
+        margin-top: -10px;
+      }
+.site-footer {
+    margin-top: 15px !important;
+}
+      .step7-retry {
+margin-top: 30px;
+      }
+      .step7-retry__text {
+        font-size: 24px;
+      }
+
+      .step7-retry__btn {
+        height: 48px;
+        padding: 0 24px;
+        font-size: 16px;
+      }
+
+      .step7-retry__icon {
+        width: 48px;
+        height: 48px;
+      }
+
+      .step7-retry__icon svg {
+        width: 24px;
+      }
+
+      .block7 {
+        margin:50px auto 0px !important;
+        padding: 40px 0px 10px 0px;
+        overflow: visible;
+      }
+
+      .block7_desk {
+        padding: 60px 25px 20px 25px;
+        align-items: center;
+        text-align: center;
+        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.4), -2px -4px 14px 0 rgba(0, 0, 0, 0.25);
+      }
+
+      .image_block7 {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .image_block7 img {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 108%;
+        margin-top: -112px;
+      }
+
+      .title_desk_bl7 {
+        display: none;
+      }
+
+      .block7_mob_title {
+        display: block;
+        margin: 0 0 10px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 1.08;
+        text-transform: uppercase;
+        text-align: center;
+        color: #0f0f0f;
+      }
+
+  
+
+      .btn_block7 {
+        margin-top: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .txt_block7_btn {
+        text-align: center;
+      }
+
+      .h2_txt7 {
+        margin-left: 0;
+      }
+
+      .txt_block7_btn h2 {
+        font-size: 20px;
+      }
+
+      .btn_arrow3 {
+        display: none;
+      }
+
+      .btn_arrow3_mob {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .step7-actions .step-btn--next .step-btn__icon {
+        order: -1 !important;
+       
+      }
+
+      .code-step__actions .step-btn--next {
+        justify-content: center !important;
+      }
+
+      .btn-circle3_mob {
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 18px;
+        border: 2px solid black;
+        border-radius: 36px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      }
+
+      .btn-icon3_mob {
+        padding: 13px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+       border: 2px solid black;
+        color: #ffffff;
+        margin-left: 0;
+        background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      }
+
+       .step7-actions {
+      margin-top: 0px;
+    }
+    }
+
+    @media (max-width: 399px) {
+      .step7-frame-btn {
+        top: 80% !important;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="center_header">
+      <div class="logo_box">
+        <h3 class="PC_h3">+7 900 000-00-00</h3>
+        <img src="img/logo.png" alt="">
+        <h3 class="PC_h3">info@mozle.ru</h3>
+      </div>
 
-   
+      <div id="menu" class="link_box">
+        <a href="" class="header_link">Получить инструкцию</a>
+        <a href="" class="header_link">Загрузить фото</a>
+        <a href="" class="header_link">Каталог</a>
+        <a href="" class="header_link">Дилерам</a>
+        <a href="" class="header_link">Контакты</a>
+      </div>
+    </div>
+  </header>
 
-
-   
-<header>
-        <div class="center_header">
-<div class="logo_box">
-     <h3  class="PC_h3">+7 900 000-00-00</h3>
-    <img src="img/logo.png" alt="">
-    <h3 class="PC_h3">info@mozle.ru</h3>
-
-
-</div>
-            <div  id="menu" class="link_box">
-                <a href="" class="header_link">Получить инструкцию</a>
-                <a href="" class="header_link">Загрузить фото</a>
-                <a href="" class="header_link">Каталог</a>
-                <a href="" class="header_link">Дилерам</a>
-                <a href="" class="header_link">Контакты</a>
-            </div>
-        </div>
-    </header>
- <!-- меню конец -->
-
- <div class="menu_mobile">
+  <div class="menu_mobile">
     <div class="center_header_mob">
+      <div class="logo_box_mob">
+        <img src="img/logo.png" alt="">
+        <div class="burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="right_txt_mob">
+          <h3>+7 900 000-00-00</h3>
+          <h3>info@mozle.ru</h3>
+        </div>
+      </div>
 
-<div class="logo_box_mob">
-    <img src="img/logo.png" alt="">
-    <div class="burger" id="burger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div id="menu2" class="link_box">
+        <a href="" class="header_link">Получить инструкцию</a>
+        <a href="" class="header_link">Загрузить фото</a>
+        <a href="" class="header_link">Каталог</a>
+        <a href="" class="header_link">Дилерам</a>
+        <a href="" class="header_link">Контакты</a>
+      </div>
     </div>
-    <div class="right_txt_mob">
-    <h3>+7 900 000-00-00</h3>
-    <h3>info@mozle.ru</h3>
-    </div>
+  </div>
 
-</div>
-            <div  id="menu2" class="link_box">
-                <a href="" class="header_link">Получить инструкцию</a>
-                <a href="" class="header_link">Загрузить фото</a>
-                <a href="" class="header_link">Каталог</a>
-                <a href="" class="header_link">Дилерам</a>
-                <a href="" class="header_link">Контакты</a>
+  <main class="page">
+    <section class="step7-content">
+      <div class="step7-preview">
+        <button class="step7-frame-btn" type="button">ВКЛЮЧИТЬ РАМКУ</button>
+        <h3 class="txt_preview">После покупки набора вам будет доступен расширенный набор возможностей для обработки изображения</h3>
+        <img id="step7-random-color" class="step7-preview__img" src="" alt="Демонстрация цветового пресета">
+      </div>
+
+      <div class="step7-retry">
+        <p class="step7-retry__text">ХОЧУ ЕЩЕ!</p>
+        <div class="step7-retry__controls">
+          <a class="step7-retry__btn" href="generate_step1.html">Выбрать другое фото</a>
+          <a class="step7-retry__icon" href="generate_step1.html" aria-label="Выбрать другое фото">
+            <svg viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="block7">
+       
+        <div class="block7_desk">
+          <div class="image_block7">
+            <picture>
+              <source media="(max-width: 1000px)" srcset="img/step7_mob.png">
+              <img src="img/step7img.png" alt="">
+            </picture>
+            <h1 class="title_desk_bl7">Понравилось!</h1>
+          </div>
+
+          <div class="btn_block7">
+     
+
+            <div class="btn_arrow3 c2">
+              <a href="#" class="btn-circle3">
+                <span class="btn-text3">Купить набор</span>
+              </a>
+              <span class="btn-icon3">
+                <svg width="30" viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+                </svg>
+              </span>
             </div>
+          </div>
 
+          <h1 class="block7_mob_title">ПОНРАВИЛОСЬ!</h1>
+          <div class="btn_arrow3_mob c2">
+          <a href="#" class="btn-circle3_mob">
+            <span class="btn-text3_mob">Купить набор</span>
+          </a>
+          <span class="btn-icon3_mob">
+            <svg width="30" viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+            </svg>
+          </span>
+	        </div>
+	      </div>
+	      </div>
+	
+	      <div class="step7-actions">
+        <div class="code-step__actions">
+          <a href="index.html">
+            <div class="step-btn step-btn--next">
+              <button class="step-btn__main step-btn__main--red" type="button">НА ГЛАВНУЮ</button>
+              <button class="step-btn__icon step-btn__icon--red" type="button" aria-label="Далее">
+                <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM39.6965 12.1066C40.2823 11.5208 40.2823 10.5711 39.6965 9.9853L30.1505 0.439358C29.5648 -0.146429 28.615 -0.146429 28.0292 0.439358C27.4434 1.02514 27.4434 1.97489 28.0292 2.56068L36.5145 11.046L28.0292 19.5312C27.4434 20.117 27.4434 21.0668 28.0292 21.6526C28.615 22.2383 29.5648 22.2383 30.1505 21.6526L39.6965 12.1066ZM1.5 11.046V12.546H38.6358V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+          </a>
         </div>
- </div>
- <!-- меню mobile -->
-
-  <div class="page">
-
-<section class="upload-step">
-  <h2 class="upload-step__title">
-    Загрузите фотографию из медиатеки<br>
-    телефона или компьютера
-  </h2>
-
-  <div class="upload-box">
-    <div class="upload-box__icon" aria-hidden="true">
-<svg width="82" height="82" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M69.0699 0H12.1888C8.95614 0 5.85587 1.28417 3.57002 3.57002C1.28417 5.85587 0 8.95614 0 12.1888V69.0699C0 72.3026 1.28417 75.4029 3.57002 77.6887C5.85587 79.9746 8.95614 81.2587 12.1888 81.2587H69.0699C69.7382 81.2494 70.4044 81.1814 71.0608 81.0556L72.2796 80.7712H72.564H72.7672L74.2705 80.2024L74.7987 79.918C75.2049 79.6742 75.6519 79.471 76.0582 79.1866C76.6007 78.7875 77.1164 78.3532 77.6021 77.8865L77.8865 77.5208C78.2854 77.1166 78.6522 76.6819 78.9835 76.2207L79.3492 75.6925C79.6329 75.2402 79.8776 74.7644 80.0805 74.2705C80.192 74.0755 80.2871 73.8717 80.3649 73.661C80.568 73.1735 80.6899 72.6453 80.8524 72.1171V71.5077C81.0828 70.7138 81.2191 69.8956 81.2587 69.0699V12.1888C81.2587 8.95614 79.9746 5.85587 77.6887 3.57002C75.4029 1.28417 72.3026 0 69.0699 0ZM12.1888 73.1329C11.1113 73.1329 10.0778 72.7048 9.31588 71.9428C8.55393 71.1809 8.12587 70.1475 8.12587 69.0699V51.5587L21.4929 38.151C21.8706 37.7702 22.32 37.4679 22.8151 37.2616C23.3102 37.0554 23.8413 36.9492 24.3776 36.9492C24.914 36.9492 25.445 37.0554 25.9401 37.2616C26.4352 37.4679 26.8846 37.7702 27.2623 38.151L62.2036 73.1329H12.1888ZM73.1329 69.0699C73.129 69.5708 73.0326 70.0667 72.8484 70.5326C72.7556 70.7306 72.6469 70.9208 72.5234 71.1014C72.4147 71.2734 72.2924 71.4364 72.1578 71.5889L50.421 49.8522L53.9964 46.2768C54.3741 45.896 54.8235 45.5938 55.3186 45.3875C55.8137 45.1812 56.3448 45.075 56.8811 45.075C57.4175 45.075 57.9485 45.1812 58.4436 45.3875C58.9387 45.5938 59.3881 45.896 59.7658 46.2768L73.1329 59.6845V69.0699ZM73.1329 48.1864L65.4945 40.6294C63.1694 38.4232 60.0864 37.1933 56.8811 37.1933C53.6759 37.1933 50.5928 38.4232 48.2677 40.6294L44.6923 44.2047L32.991 32.5035C30.6659 30.2973 27.5829 29.0674 24.3776 29.0674C21.1724 29.0674 18.0893 30.2973 15.7642 32.5035L8.12587 40.0606V12.1888C8.12587 11.1113 8.55393 10.0778 9.31588 9.31588C10.0778 8.55393 11.1113 8.12587 12.1888 8.12587H69.0699C70.1475 8.12587 71.1809 8.55393 71.9428 9.31588C72.7048 10.0778 73.1329 11.1113 73.1329 12.1888V48.1864ZM46.7238 16.2517C45.5184 16.2517 44.3401 16.6092 43.3379 17.2788C42.3357 17.9485 41.5545 18.9003 41.0933 20.0139C40.632 21.1275 40.5113 22.3529 40.7465 23.5351C40.9816 24.7173 41.5621 25.8032 42.4144 26.6555C43.2667 27.5079 44.3526 28.0883 45.5348 28.3235C46.717 28.5586 47.9424 28.4379 49.056 27.9766C50.1696 27.5154 51.1214 26.7342 51.7911 25.732C52.4607 24.7298 52.8182 23.5515 52.8182 22.3461C52.8182 20.7298 52.1761 19.1797 51.0332 18.0368C49.8902 16.8938 48.3401 16.2517 46.7238 16.2517Z" fill="#0F0F0F" />
-</svg>
-    </div>
-
-    <p class="upload-box__text" id="upload-step-text">
-      Загрузите фотографию<br>
-      или переместите изображение
-    </p>
-
-    <input
-      type="file"
-      id="upload-image-input"
-      class="upload-box__input"
-      accept="image/*"
-    >
-
-    <label for="upload-image-input" class="upload-action" id="upload-action">
-      <span class="upload-action__icon" aria-hidden="true">
-<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M17.2925 0H3.05162C2.24228 0 1.46609 0.321509 0.893799 0.893799C0.321509 1.46609 0 2.24228 0 3.05162V17.2925C0 18.1018 0.321509 18.878 0.893799 19.4503C1.46609 20.0226 2.24228 20.3441 3.05162 20.3441H17.2925C17.4598 20.3418 17.6266 20.3248 17.7909 20.2933L18.0961 20.2221H18.1673H18.2182L18.5945 20.0797L18.7268 20.0085C18.8285 19.9474 18.9404 19.8966 19.0421 19.8254C19.1779 19.7254 19.3071 19.6167 19.4286 19.4998L19.4998 19.4083C19.5997 19.3071 19.6915 19.1983 19.7745 19.0828L19.866 18.9506C19.9371 18.8373 19.9983 18.7182 20.0491 18.5945C20.077 18.5457 20.1009 18.4947 20.1203 18.442C20.1712 18.3199 20.2017 18.1877 20.2424 18.0554V17.9028C20.3001 17.7041 20.3342 17.4992 20.3441 17.2925V3.05162C20.3441 2.24228 20.0226 1.46609 19.4503 0.893799C18.878 0.321509 18.1018 0 17.2925 0ZM3.05162 18.3097C2.78184 18.3097 2.52311 18.2025 2.33235 18.0118C2.14158 17.821 2.03441 17.5623 2.03441 17.2925V12.9083L5.38102 9.55157C5.47558 9.45623 5.58809 9.38055 5.71204 9.32891C5.836 9.27727 5.96896 9.25068 6.10324 9.25068C6.23752 9.25068 6.37048 9.27727 6.49443 9.32891C6.61839 9.38055 6.73089 9.45623 6.82546 9.55157L15.5734 18.3097H3.05162ZM18.3097 17.2925C18.3088 17.4179 18.2846 17.5421 18.2385 17.6587C18.2153 17.7083 18.188 17.7559 18.1571 17.8011C18.1299 17.8442 18.0993 17.885 18.0656 17.9232L12.6235 12.4811L13.5187 11.586C13.6132 11.4906 13.7257 11.415 13.8497 11.3633C13.9737 11.3117 14.1066 11.2851 14.2409 11.2851C14.3752 11.2851 14.5081 11.3117 14.6321 11.3633C14.756 11.415 14.8685 11.4906 14.9631 11.586V11.586L18.3097 14.9428V17.2925ZM18.3097 12.0641L16.3974 10.1721C15.8152 9.61971 15.0434 9.31179 14.2409 9.31179C13.4384 9.31179 12.6665 9.61971 12.0844 10.1721L11.1893 11.0672L8.25972 8.13765C7.67759 7.5853 6.90571 7.27738 6.10324 7.27738C5.30077 7.27738 4.52889 7.5853 3.94676 8.13765L2.03441 10.0297V3.05162C2.03441 2.78184 2.14158 2.52311 2.33235 2.33235C2.52311 2.14158 2.78184 2.03441 3.05162 2.03441H17.2925C17.5623 2.03441 17.821 2.14158 18.0118 2.33235C18.2025 2.52311 18.3097 2.78184 18.3097 3.05162V12.0641ZM11.6979 4.06883C11.3961 4.06883 11.1011 4.15831 10.8502 4.32597C10.5993 4.49363 10.4037 4.73193 10.2882 5.01073C10.1727 5.28954 10.1425 5.59633 10.2014 5.89231C10.2603 6.18828 10.4056 6.46016 10.619 6.67355C10.8324 6.88693 11.1042 7.03225 11.4002 7.09113C11.6962 7.15 12.003 7.11978 12.2818 7.0043C12.5606 6.88881 12.7989 6.69325 12.9665 6.44233C13.1342 6.19141 13.2237 5.89641 13.2237 5.59464C13.2237 5.18997 13.0629 4.80187 12.7768 4.51572C12.4906 4.22958 12.1025 4.06883 11.6979 4.06883Z" fill="white" />
-</svg>
-      </span>
-
-      <span class="upload-action__main">ЗАГРУЗИТЕ ИЗОБРАЖЕНИЕ</span>
-    </label>
-
-    <p class="upload-box__limit" id="upload-limit-text">Размер файла не более 15 Мб</p>
-  </div>
-
-  <div class="code-step__actions upload-step__actions">
-    <a href="generate_step3.html" id="upload-back-link">
-      <div class="step-btn step-btn--back">
-        <button class="step-btn__icon step-btn__icon--dark" type="button" aria-label="Назад">
-          <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M38.6357 9.54596C39.4642 9.54596 40.1357 10.2175 40.1357 11.046C40.1357 11.8744 39.4642 12.546 38.6357 12.546V11.046V9.54596ZM0.439262 12.1066C-0.146523 11.5208 -0.146523 10.5711 0.439262 9.9853L9.9852 0.439358C10.571 -0.146429 11.5207 -0.146429 12.1065 0.439358C12.6923 1.02514 12.6923 1.97489 12.1065 2.56068L3.62124 11.046L12.1065 19.5312C12.6923 20.117 12.6923 21.0668 12.1065 21.6526C11.5207 22.2383 10.571 22.2383 9.9852 21.6526L0.439262 12.1066ZM38.6357 11.046V12.546H1.49992V11.046V9.54596H38.6357V11.046Z" fill="white"/>
-          </svg>
-        </button>
-
-        <button class="step-btn__main step-btn__main--dark" type="button">НАЗАД</button>
       </div>
-    </a>
+    </section>
+  </main>
 
-    <a href="generate_step5.html" id="upload-next-link">
-      <div class="step-btn step-btn--next">
-        <button class="step-btn__main step-btn__main--red" type="button">ДАЛЕЕ</button>
-
-        <button class="step-btn__icon step-btn__icon--red" type="button" aria-label="Далее">
-          <svg width="41" height="41" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM39.6965 12.1066C40.2823 11.5208 40.2823 10.5711 39.6965 9.9853L30.1505 0.439358C29.5648 -0.146429 28.615 -0.146429 28.0292 0.439358C27.4434 1.02514 27.4434 1.97489 28.0292 2.56068L36.5145 11.046L28.0292 19.5312C27.4434 20.117 27.4434 21.0668 28.0292 21.6526C28.615 22.2383 29.5648 22.2383 30.1505 21.6526L39.6965 12.1066ZM1.5 11.046V12.546H38.6358V11.046V9.54596H1.5V11.046Z" fill="white"/>
-          </svg>
-        </button>
-      </div>
-    </a>
-  </div>
-</section>
-
-    </div>
-<footer class="site-footer">
-    <!-- Основная навигация и информация -->
+  <footer class="site-footer">
     <div class="footer-container">
+      <div class="footer-brand">
+        <a href="/" class="brand-link">
+          <img class="footer_logo" src="img/logo.png" alt="">
+        </a>
+      </div>
 
-        <!-- Левый блок: Название / Логотип (гипотетический) -->
-        <div class="footer-brand">
-            <a href="/" class="brand-link">
-                <img class="footer_logo" src="img/logo.png" alt="">
-            </a>
-            <!-- Кнопка/ссылка для каталога, если нужно выделить -->
-           
-        </div>
+      <div class="footer-nav">
+        <ul class="footer-menu">
+          <li><a href="#">Каталог</a></li>
+          <li><a href="#">Получить инструкцию</a></li>
+          <li><a href="#">Загрузить фото</a></li>
+          <li><a href="#">Отзывы покупателей</a></li>
+          <li><a href="#">Дилерам и партнерам</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </div>
 
-        <!-- Центральный блок: Основное меню (первая колонка) -->
-        <div class="footer-nav">
-            <ul class="footer-menu">
-                 <li><a href="#">Каталог</a></li>
-                <li><a href="#">Получить инструкцию</a></li>
-                <li><a href="#">Загрузить фото</a></li>
-                <li><a href="#">Отзывы покупателей</a></li>
-                <li><a href="#">Дилерам и партнёрам</a></li>
-                <li><a href="#">Контакты</a></li>
-            </ul>
-        </div>
+      <div class="footer-legal">
+        <ul class="legal-links">
+          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><a href="#">Политика использования файлов cookies</a></li>
+          <li><a href="#">Обработка персональных данных</a></li>
+        </ul>
+      </div>
 
-        <!-- Правый блок: Юридические документы и контакты (вторая колонка) -->
-        <div class="footer-legal">
-            <ul class="legal-links">
-                <li><a href="#">Политика конфиденциальности</a></li>
-                <li><a href="#">Политика использования файлов cookies</a></li>
-                <li><a href="#">Обработка персональных данных</a></li>
-            </ul>
-
-        </div>
-        <div class="footer-contacts">
-            <a href="tel:+79000000000" class="contact-phone">+7 900 000-00-00</a>
-            <a href="mailto:info@mozle.ru" class="contact-email">info@mozle.ru</a>
-            <address class="contact-address">
-                101000, г. Москва, ул. Тверская, д. 15/2, корп. 1, офис 177
-            </address>
-        </div>
+      <div class="footer-contacts">
+        <a href="tel:+79000000000" class="contact-phone">+7 900 000-00-00</a>
+        <a href="mailto:info@mozle.ru" class="contact-email">info@mozle.ru</a>
+        <address class="contact-address">
+          101000, г. Москва, ул. Тверская, д. 15/2, корп. 1, офис 177
+        </address>
+      </div>
     </div>
 
-    <!-- Нижняя полоса с копирайтом -->
     <div class="footer-bottom">
-        <p class="copyright">2025 © MozLe</p>
+      <p class="copyright">2025 © MozLe</p>
     </div>
-</footer>
+  </footer>
 
+  <script>
+    const burger = document.getElementById("burger");
+    const menu = document.getElementById("menu2");
+
+    if (burger && menu) {
+      burger.addEventListener("click", () => {
+        menu.classList.toggle("active");
+      });
+    }
+
+    const orientationKey = "mozle_editor_orientation";
+    const orientation = localStorage.getItem(orientationKey) || "landscape";
+    const randomColorImage = document.getElementById("step7-random-color");
+    const colorDemoDir = "img/\u0441olor_demo";
+
+    const landscapeImages = [
+      `${colorDemoDir}/color1_book.png`,
+      `${colorDemoDir}/color2_book.png`,
+      `${colorDemoDir}/color3_book.png`,
+      `${colorDemoDir}/color4_book.png`
+    ];
+
+    const portraitImages = [
+      `${colorDemoDir}/color1.png`,
+      `${colorDemoDir}/color2.png`,
+      `${colorDemoDir}/color3.png`,
+      `${colorDemoDir}/color4.png`
+    ];
+
+    if (randomColorImage) {
+      const targetPool = orientation === "portrait" ? portraitImages : landscapeImages;
+      const randomIndex = Math.floor(Math.random() * targetPool.length);
+      randomColorImage.src = targetPool[randomIndex];
+    }
+  </script>
 </body>
-<script>
-  const burger = document.getElementById("burger");
-  const menu = document.getElementById("menu2");
-
-  if (burger && menu) {
-    burger.addEventListener("click", () => {
-      menu.classList.toggle("active");
-    });
-  }
-
-  const STORAGE_KEYS = {
-    uploadedImageName: "mozle_uploaded_image_name",
-    uploadedImageFallback: "mozle_uploaded_image_data",
-    setSize: "mozle_set_size",
-    setCount: "mozle_set_count"
-  };
-
-  const IMAGE_DB_CONFIG = {
-    name: "mozle_step_storage",
-    version: 1,
-    storeName: "files",
-    imageKey: "step4_original_image"
-  };
-
-  const uploadInput = document.getElementById("upload-image-input");
-  const uploadText = document.getElementById("upload-step-text");
-  const uploadLimitText = document.getElementById("upload-limit-text");
-  const uploadAction = document.getElementById("upload-action");
-  const backLink = document.getElementById("upload-back-link");
-  const nextLink = document.getElementById("upload-next-link");
-
-  function updateBackLink() {
-    if (!backLink) return;
-
-    const savedSet = localStorage.getItem(STORAGE_KEYS.setSize);
-    const savedCount = localStorage.getItem(STORAGE_KEYS.setCount);
-    const shouldReturnToStep2 = savedSet === "S" && savedCount === "1";
-
-    backLink.setAttribute(
-      "href",
-      shouldReturnToStep2 ? "generate_step2.html" : "generate_step3.html"
-    );
-  }
-
-  function setNextAvailability(isEnabled) {
-    if (!nextLink) return;
-
-    nextLink.style.pointerEvents = isEnabled ? "auto" : "none";
-    nextLink.style.opacity = isEnabled ? "1" : "0.6";
-  }
-
-  function setUploadActionState(isLoaded) {
-    if (!uploadAction) return;
-    uploadAction.classList.toggle("is-loaded", Boolean(isLoaded));
-  }
-
-  function openImageDB() {
-    return new Promise((resolve, reject) => {
-      if (!("indexedDB" in window)) {
-        reject(new Error("IndexedDB is not supported"));
-        return;
-      }
-
-      const request = indexedDB.open(IMAGE_DB_CONFIG.name, IMAGE_DB_CONFIG.version);
-
-      request.onupgradeneeded = () => {
-        const db = request.result;
-
-        if (!db.objectStoreNames.contains(IMAGE_DB_CONFIG.storeName)) {
-          db.createObjectStore(IMAGE_DB_CONFIG.storeName, { keyPath: "id" });
-        }
-      };
-
-      request.onsuccess = () => resolve(request.result);
-      request.onerror = () => reject(request.error || new Error("Не удалось открыть IndexedDB"));
-    });
-  }
-
-  async function saveImageToStorage(file) {
-    const db = await openImageDB();
-
-    await new Promise((resolve, reject) => {
-      const transaction = db.transaction(IMAGE_DB_CONFIG.storeName, "readwrite");
-      const store = transaction.objectStore(IMAGE_DB_CONFIG.storeName);
-
-      store.put({
-        id: IMAGE_DB_CONFIG.imageKey,
-        blob: file,
-        name: file.name,
-        type: file.type,
-        savedAt: Date.now()
-      });
-
-      transaction.oncomplete = () => resolve();
-      transaction.onerror = () => reject(transaction.error || new Error("Не удалось сохранить файл"));
-      transaction.onabort = () => reject(transaction.error || new Error("Сохранение файла было прервано"));
-    });
-
-    db.close();
-  }
-
-  function saveImageFallback(file) {
-    return new Promise((resolve, reject) => {
-      if (file.size > 2.5 * 1024 * 1024) {
-        reject(new Error("Файл слишком большой для fallback-хранилища"));
-        return;
-      }
-
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        try {
-          localStorage.setItem(STORAGE_KEYS.uploadedImageFallback, reader.result);
-          resolve();
-        } catch (error) {
-          reject(error);
-        }
-      };
-
-      reader.onerror = () => reject(reader.error || new Error("Не удалось прочитать файл"));
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async function prepareStoredImage() {
-    let hasSavedImage = false;
-
-    try {
-      const db = await openImageDB();
-      const transaction = db.transaction(IMAGE_DB_CONFIG.storeName, "readonly");
-      const request = transaction.objectStore(IMAGE_DB_CONFIG.storeName).get(IMAGE_DB_CONFIG.imageKey);
-
-      const storedRecord = await new Promise((resolve, reject) => {
-        request.onsuccess = () => resolve(request.result || null);
-        request.onerror = () => reject(request.error || new Error("Не удалось получить изображение"));
-      });
-
-      db.close();
-      hasSavedImage = Boolean(storedRecord && storedRecord.blob);
-    } catch (error) {
-      hasSavedImage = Boolean(localStorage.getItem(STORAGE_KEYS.uploadedImageFallback));
-    }
-
-    setNextAvailability(hasSavedImage);
-    setUploadActionState(hasSavedImage);
-
-    const savedName = localStorage.getItem(STORAGE_KEYS.uploadedImageName);
-
-    if (hasSavedImage && savedName && uploadText && uploadLimitText) {
-      uploadText.textContent = savedName;
-      uploadLimitText.textContent = "Файл загружен";
-      uploadLimitText.style.color = "#4a4a4a";
-    }
-  }
-
-  setNextAvailability(false);
-  setUploadActionState(false);
-  updateBackLink();
-  prepareStoredImage();
-
-  if (uploadInput) {
-    uploadInput.addEventListener("click", () => {
-      uploadInput.value = "";
-    });
-
-    uploadInput.addEventListener("change", async () => {
-      const file = uploadInput.files && uploadInput.files[0];
-
-      if (!file) return;
-
-      const maxSize = 15 * 1024 * 1024;
-
-      if (file.size > maxSize) {
-        uploadInput.value = "";
-        uploadText.innerHTML = "Загрузите фотографию<br>или переместите изображение";
-        uploadLimitText.textContent = "Файл больше 15 Мб";
-        uploadLimitText.style.color = "#bf1f32";
-        setNextAvailability(false);
-        setUploadActionState(false);
-        return;
-      }
-
-      uploadText.textContent = file.name;
-      uploadLimitText.textContent = "Сохраняем файл...";
-      uploadLimitText.style.color = "#4a4a4a";
-      setNextAvailability(false);
-      setUploadActionState(false);
-
-      try {
-        await saveImageToStorage(file);
-        localStorage.removeItem(STORAGE_KEYS.uploadedImageFallback);
-      } catch (error) {
-        try {
-          await saveImageFallback(file);
-        } catch (fallbackError) {
-          uploadLimitText.textContent = "Не удалось сохранить файл";
-          uploadLimitText.style.color = "#bf1f32";
-          setNextAvailability(false);
-          setUploadActionState(false);
-          return;
-        }
-      }
-
-      localStorage.setItem(STORAGE_KEYS.uploadedImageName, file.name);
-
-      uploadLimitText.textContent = "Файл загружен";
-      uploadLimitText.style.color = "#4a4a4a";
-      setNextAvailability(true);
-      setUploadActionState(true);
-    });
-  }
-</script>
 </html>
-
