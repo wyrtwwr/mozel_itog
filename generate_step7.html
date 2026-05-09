@@ -162,7 +162,7 @@
     }
 
     .step7-actions {
-      margin-top: 48px;
+      margin-top: 20px;
     }
 
     .step7-actions .code-step__actions {
@@ -351,6 +351,10 @@
       display: none;
     }
 
+    .block7_mob_title {
+      display: none;
+    }
+
     .txt_preview {
       width: 582px;
     display: inline-flex;
@@ -375,24 +379,65 @@ color: #fff;
     transform: translateX(-50%);
     z-index: 5;
     }
+    .site-footer {
+    margin-top: 70px !important;
+}
 
   
     @media (max-width: 1000px) {
       .step7-content {
-        padding: 0 16px 72px;
+        padding: 0 16px 25px;
       }
 
       .step7-frame-btn {
         min-height: 40px;
         padding: 0 14px;
-        top: 14px;
+        top: 328px;
         font-size: 12px;
+      }
+
+      .step7-preview__img {
+                box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.4), -2px -4px 14px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 20px !important;
+        display: block;
+        width: 750px;
+        max-width: 100%;
+        margin: 120px auto  30px auto;
+        border-radius: 0;
+        object-fit: contain;
+      }
+
+      .txt_preview {
+        max-width:340px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 24px;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 100%;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        position: absolute;
+        top: -95px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
       }
 
       .step7-preview {
         margin-top: -10px;
       }
-
+.site-footer {
+    margin-top: 15px !important;
+}
+      .step7-retry {
+margin-top: 30px;
+      }
       .step7-retry__text {
         font-size: 24px;
       }
@@ -413,13 +458,16 @@ color: #fff;
       }
 
       .block7 {
-        padding: 32px 0 20px;
+        margin:50px auto 0px !important;
+        padding: 40px 0px 10px 0px;
+        overflow: visible;
       }
 
       .block7_desk {
-        padding: 60px 25px 20px;
+        padding: 60px 25px 20px 25px;
         align-items: center;
         text-align: center;
+        box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.4), -2px -4px 14px 0 rgba(0, 0, 0, 0.25);
       }
 
       .image_block7 {
@@ -441,11 +489,9 @@ color: #fff;
         display: none;
       }
 
-      .mob_bl7 {
+      .block7_mob_title {
         display: block;
-        position: relative;
-        top: -25px;
-        margin: 0;
+        margin: 0 0 10px;
         font-weight: 700;
         font-size: 24px;
         line-height: 1.08;
@@ -453,6 +499,8 @@ color: #fff;
         text-align: center;
         color: #0f0f0f;
       }
+
+  
 
       .btn_block7 {
         margin-top: 0;
@@ -483,35 +531,54 @@ color: #fff;
         align-items: center;
         gap: 0;
         width: 100%;
-        margin-top: 24px;
+        margin-top: 10px;
+      }
+
+      .step7-actions .step-btn--next .step-btn__icon {
+        order: -1 !important;
+       
+      }
+
+      .code-step__actions .step-btn--next {
+        justify-content: center !important;
       }
 
       .btn-circle3_mob {
         text-transform: uppercase;
         display: inline-flex;
         align-items: center;
-        padding: 15px 10px;
-        border: 0;
+        padding: 15px 18px;
+        border: 2px solid black;
         border-radius: 36px;
         color: #ffffff;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
       }
 
       .btn-icon3_mob {
-        padding: 15px;
+        padding: 13px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        border: 0;
+       border: 2px solid black;
         color: #ffffff;
         margin-left: 0;
         background: radial-gradient(315.13% 323.48% at 23.74% -32.66%, #bf1f32 0%, #590f17 100%);
+      }
+
+       .step7-actions {
+      margin-top: 0px;
+    }
+    }
+
+    @media (max-width: 399px) {
+      .step7-frame-btn {
+        top: 80% !important;
       }
     }
   </style>
@@ -581,10 +648,13 @@ color: #fff;
       </div>
 
       <div class="block7">
-        <h1 class="mob_bl7">У вас уже есть<br>набор мозаики MOZLE</h1>
+       
         <div class="block7_desk">
           <div class="image_block7">
-            <img src="img/step7img.png" alt="">
+            <picture>
+              <source media="(max-width: 1000px)" srcset="img/step7_mob.png">
+              <img src="img/step7img.png" alt="">
+            </picture>
             <h1 class="title_desk_bl7">Понравилось!</h1>
           </div>
 
@@ -602,21 +672,22 @@ color: #fff;
               </span>
             </div>
           </div>
-        </div>
 
-        <div class="btn_arrow3_mob c2">
+          <h1 class="block7_mob_title">ПОНРАВИЛОСЬ!</h1>
+          <div class="btn_arrow3_mob c2">
           <a href="#" class="btn-circle3_mob">
-            <span class="btn-text3_mob">получить инструкцию</span>
+            <span class="btn-text3_mob">Купить набор</span>
           </a>
           <span class="btn-icon3_mob">
             <svg width="30" viewBox="0 0 34 23" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1.5 9.54596C0.671573 9.54596 0 10.2175 0 11.046C0 11.8744 0.671573 12.546 1.5 12.546V11.046V9.54596ZM32.7335 12.1066C33.3193 11.5208 33.3193 10.5711 32.7335 9.9853L23.1876 0.439358C22.6018 -0.146429 21.652 -0.146429 21.0662 0.439358C20.4805 1.02514 20.4805 1.97489 21.0662 2.56068L29.5515 11.046L21.0662 19.5312C20.4805 20.117 20.4805 21.0668 21.0662 21.6526C21.652 22.2383 22.6018 22.2383 23.1876 21.6526L32.7335 12.1066ZM1.5 11.046V12.546H31.6729V11.046V9.54596H1.5V11.046Z" fill="currentColor"/>
             </svg>
           </span>
-        </div>
-      </div>
-
-      <div class="step7-actions">
+	        </div>
+	      </div>
+	      </div>
+	
+	      <div class="step7-actions">
         <div class="code-step__actions">
           <a href="index.html">
             <div class="step-btn step-btn--next">
