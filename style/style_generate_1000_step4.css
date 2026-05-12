@@ -2,25 +2,32 @@
   .upload-step {
     max-width: 390px;
     margin: 0 auto;
-    padding: 14px 0 0;
+    padding: 20px 0 0;
     overflow: hidden;
   }
 
   .upload-step__title {
-    max-width: 320px;
+    max-width: 360px;
     margin: 0 auto 18px;
     padding: 0 12px;
     box-sizing: border-box;
-    font-size: 20px;
-    line-height: 1.2;
+    font-size: 16px;
+    line-height: 1.25;
   }
 
   .upload-box {
     width: calc(100% - 30px);
     max-width: 342px;
     min-height: 0;
-    padding: 28px 18px 24px;
+    padding: 24px 18px 24px;
     box-sizing: border-box;
+  }
+
+  .upload-box__title {
+    margin: 0 0 14px;
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: center;
   }
 
   .upload-box__icon {
@@ -34,6 +41,10 @@
     font-size: 18px;
     line-height: 1.2;
     text-align: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .upload-action {

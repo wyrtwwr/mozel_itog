@@ -36,9 +36,10 @@
       line-height: 1;
       font-weight: 700;
       text-transform: uppercase;
+      white-space: nowrap;
       cursor: pointer;
       position: absolute;
-      top: 30px;
+      top: 620px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 5;
@@ -167,7 +168,6 @@
 
     .step7-actions .code-step__actions {
       justify-content: center;
-      gap: 16px;
     }
 
     .step7-actions .step-btn--next .step-btn__main,
@@ -179,15 +179,15 @@
     }
 
     .step7-actions .step-btn--next .step-btn__icon {
-      order: -1;
+      order: 0;
     }
 
     .step7-actions .step-btn--next .step-btn__icon svg {
-      transform: scaleX(-1);
+      transform: none;
     }
 
     .step7-actions .step-btn--next:hover .step-btn__icon {
-      transform: translateX(-4px);
+      transform: translateX(4px);
     }
 
     .block7 {
@@ -389,13 +389,6 @@ color: #fff;
         padding: 0 16px 25px;
       }
 
-      .step7-frame-btn {
-        min-height: 40px;
-        padding: 0 14px;
-        top: 328px;
-        font-size: 12px;
-      }
-
       .step7-preview__img {
                 box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.4), -2px -4px 14px 0 rgba(0, 0, 0, 0.25);
         border-radius: 20px !important;
@@ -534,11 +527,6 @@ margin-top: 30px;
         margin-top: 10px;
       }
 
-      .step7-actions .step-btn--next .step-btn__icon {
-        order: -1 !important;
-       
-      }
-
       .code-step__actions .step-btn--next {
         justify-content: center !important;
       }
@@ -574,12 +562,14 @@ margin-top: 30px;
        .step7-actions {
       margin-top: 0px;
     }
+
+        .step7-frame-btn {
+ font-size: 15px;
+      white-space: nowrap;
+      top: 80%;
+   
     }
 
-    @media (max-width: 399px) {
-      .step7-frame-btn {
-        top: 80% !important;
-      }
     }
   </style>
 </head>
@@ -592,13 +582,6 @@ margin-top: 30px;
         <h3 class="PC_h3">info@mozle.ru</h3>
       </div>
 
-      <div id="menu" class="link_box">
-        <a href="" class="header_link">Получить инструкцию</a>
-        <a href="" class="header_link">Загрузить фото</a>
-        <a href="" class="header_link">Каталог</a>
-        <a href="" class="header_link">Дилерам</a>
-        <a href="" class="header_link">Контакты</a>
-      </div>
     </div>
   </header>
 
@@ -617,13 +600,6 @@ margin-top: 30px;
         </div>
       </div>
 
-      <div id="menu2" class="link_box">
-        <a href="" class="header_link">Получить инструкцию</a>
-        <a href="" class="header_link">Загрузить фото</a>
-        <a href="" class="header_link">Каталог</a>
-        <a href="" class="header_link">Дилерам</a>
-        <a href="" class="header_link">Контакты</a>
-      </div>
     </div>
   </div>
 
@@ -689,6 +665,18 @@ margin-top: 30px;
 	
 	      <div class="step7-actions">
         <div class="code-step__actions">
+          <a href="generate_step3.html">
+            <div class="step-btn step-btn--back">
+              <button class="step-btn__icon step-btn__icon--dark" type="button" aria-label="Назад">
+                <svg width="41" height="23" viewBox="0 0 41 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M38.6357 9.54596C39.4642 9.54596 40.1357 10.2175 40.1357 11.046C40.1357 11.8744 39.4642 12.546 38.6357 12.546V11.046V9.54596ZM0.439262 12.1066C-0.146523 11.5208 -0.146523 10.5711 0.439262 9.9853L9.9852 0.439358C10.571 -0.146429 11.5207 -0.146429 12.1065 0.439358C12.6923 1.02514 12.6923 1.97489 12.1065 2.56068L3.62124 11.046L12.1065 19.5312C12.6923 20.117 12.6923 21.0668 12.1065 21.6526C11.5207 22.2383 10.571 22.2383 9.9852 21.6526L0.439262 12.1066ZM38.6357 11.046V12.546H1.49992V11.046V9.54596H38.6357V11.046Z" fill="currentColor"/>
+                </svg>
+              </button>
+
+              <button class="step-btn__main step-btn__main--dark" type="button">НАЗАД</button>
+            </div>
+          </a>
+
           <a href="index.html">
             <div class="step-btn step-btn--next">
               <button class="step-btn__main step-btn__main--red" type="button">НА ГЛАВНУЮ</button>

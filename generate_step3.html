@@ -22,13 +22,6 @@
 
 
 </div>
-            <div  id="menu" class="link_box">
-                <a href="" class="header_link">Получить инструкцию</a>
-                <a href="" class="header_link">Загрузить фото</a>
-                <a href="" class="header_link">Каталог</a>
-                <a href="" class="header_link">Дилерам</a>
-                <a href="" class="header_link">Контакты</a>
-            </div>
         </div>
     </header>
  <!-- меню конец -->
@@ -49,13 +42,6 @@
     </div>
 
 </div>
-            <div  id="menu2" class="link_box">
-                <a href="" class="header_link">Получить инструкцию</a>
-                <a href="" class="header_link">Загрузить фото</a>
-                <a href="" class="header_link">Каталог</a>
-                <a href="" class="header_link">Дилерам</a>
-                <a href="" class="header_link">Контакты</a>
-            </div>
 
         </div>
  </div>
@@ -253,6 +239,7 @@
     originalImageKey: "step4_original_image",
     editedImageKey: "step6_edited_image"
   };
+  const ALLOWED_CANVAS_FORMATS = new Set(["2x3", "3x2"]);
 
   const burger = document.getElementById("burger");
   const menu = document.getElementById("menu2");
@@ -288,7 +275,7 @@
   let currentObjectUrl = "";
   let editedSnapshotTimer = 0;
   let editedSnapshotRequestId = 0;
-  let currentFormat = localStorage.getItem(STORAGE_KEYS.canvasSize) || "2x3";
+  let currentFormat = normalizeCanvasFormat(localStorage.getItem(STORAGE_KEYS.canvasSize));
   let currentOrientation = localStorage.getItem(STORAGE_KEYS.editorOrientation) || "landscape";
   let panX = 0;
   let panY = 0;
@@ -303,6 +290,13 @@
   let pinchStartDistance = 0;
   let pinchStartZoomValue = 0;
   const ROTATE_SNAP_DEGREES = 2;
+
+  function normalizeCanvasFormat(format) {
+    const normalized = String(format || "").trim().toLowerCase();
+    return ALLOWED_CANVAS_FORMATS.has(normalized) ? normalized : "2x3";
+  }
+
+  localStorage.setItem(STORAGE_KEYS.canvasSize, currentFormat);
 
   function openImageDB() {
     return new Promise((resolve, reject) => {
@@ -648,9 +642,10 @@ function bindHints() {
 }
 
   function parseFormat(format) {
-    const [rowsRaw, colsRaw] = (format || "2x3").toLowerCase().split("x");
-    const rows = Number(rowsRaw) || 2;
-    const cols = Number(colsRaw) || 3;
+    const normalizedFormat = normalizeCanvasFormat(format);
+    const [rowsRaw, colsRaw] = normalizedFormat.split("x");
+    const rows = Number(rowsRaw);
+    const cols = Number(colsRaw);
     return { rows, cols };
   }
 
